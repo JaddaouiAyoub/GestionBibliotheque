@@ -133,5 +133,26 @@ public class BookDAO {
             return "Erreur lors de la suppression de tous les livres : ";
         }
     }
+    public List<Book> findBooksByTitle(String title) {
+        List<Book> books = new ArrayList<>();
+        String query = "SELECT * FROM books WHERE title LIKE ?";
+        try (Connection connection = DbConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, "%" + title + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                books.add(new Book(
+                        resultSet.getInt("id"),
+                        resultSet.getString("title"),
+                        resultSet.getString("author"),
+                        resultSet.getBoolean("available")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return books;
+    }
+
 
 }
