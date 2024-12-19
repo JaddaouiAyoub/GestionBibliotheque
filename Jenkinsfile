@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/JaddaouiAyoub/GestionBibliotheque.git'
+                git 'https://github.com/JaddaouiAyoub/GestionBibliotheque.git' , branch:'main'
             }
         }
         stage('Build') {
