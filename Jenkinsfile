@@ -29,7 +29,7 @@ pipeline {
                         ${MAVEN_HOME}/bin/mvn clean verify sonar:sonar\
                           -Dsonar.projectKey=library-management \
                           -Dsonar.projectName='library-management' \
-                          -Dsonar.host.url=http://localhost:9000 \
+                          -Dsonar.host.url=http://host.docker.internal:9000 \
                           -Dsonar.token=sqp_77184bb20899618f745968eb22c6533d43755af1
                         """
                     }
