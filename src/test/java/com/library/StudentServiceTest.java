@@ -16,6 +16,7 @@ class StudentServiceTest {
     void setUp() {
         studentDAO = new StudentDAO();
         studentService = new StudentService();
+        studentDAO.deleteAllStudents();
     }
 
     @Test

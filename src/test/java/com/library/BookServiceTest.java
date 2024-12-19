@@ -18,7 +18,8 @@ class BookServiceTest {
     void setUp() {
         bookDAO = new BookDAO();
         bookService = new BookService();
-
+        bookDAO.deleteAll();
+        studentService.deleteAllStudents();
     }
 
     @Test
