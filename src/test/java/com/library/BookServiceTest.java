@@ -7,6 +7,8 @@ import com.library.service.StudentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BookServiceTest {
@@ -46,4 +48,13 @@ class BookServiceTest {
         bookService.deleteBook(1);
         assertTrue(bookDAO.getBookById(1).isEmpty());
     }
+    @Test
+    void testSearchBooksByTitle() {
+        bookDAO.addBook(new Book(1, "Java Programming", "John Doe", true));
+        bookDAO.addBook(new Book(2, "Advanced Java", "Jane Doe", true));
+        List<Book> results = bookService.searchBooksByTitle("Java");
+        assertEquals(2, results.size());
+        assertEquals("Java Programming", results.get(0).getTitle());
+    }
+
 }

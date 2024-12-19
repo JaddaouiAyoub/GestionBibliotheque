@@ -39,6 +39,9 @@ public class BookService {
         book.setAvailable(available);
         bookDAO.updateBook(book);
     }
+    public List<Book> searchBooksByTitle(String title) {
+        return bookDAO.findBooksByTitle(title);
+    }
 
     public void deleteBook(int id) {
         bookDAO.deleteBook(id);
