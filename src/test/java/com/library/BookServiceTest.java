@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookServiceTest {
     private BookService bookService;
     private BookDAO bookDAO ;
-    private StudentService studentService;
+    private StudentService studentService=new StudentService();
 
     @BeforeEach
     void setUp() {
@@ -35,8 +35,8 @@ class BookServiceTest {
         Book book = new Book(2, "Java Programming", "John Doe", true);
         bookService.addBook(book);
         bookService.updateBook(2, "Advanced Java", "Jane Doe", false);
-        assertEquals("Advanced Java", bookDAO.getBookById(1).get().getTitle());
-        assertFalse(bookDAO.getBookById(1).get().isAvailable());
+        assertEquals("Advanced Java", bookDAO.getBookById(2).get().getTitle());
+        assertFalse(bookDAO.getBookById(2).get().isAvailable());
     }
 
     @Test
